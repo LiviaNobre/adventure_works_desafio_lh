@@ -23,9 +23,9 @@ with
             , style as estilo
             , cast(productsubcategoryid as int) as id_subcategoria_produto
             , cast(productmodelid as int) as id_modelo_produto
-            , parse_timestamp('%Y-%m-%d %H:%M:%S.%f', cast(sellstartdate as string)) as data_inicio_venda
-            , parse_timestamp('%Y-%m-%d %H:%M:%S.%f', cast(sellenddate as string)) as data_fim_venda
-            , parse_timestamp('%Y-%m-%d %H:%M:%S.%f', cast(discontinueddate as string)) as data_descontinuacao
+            , cast(sellstartdate as timestamp) as data_inicio_venda
+            , cast(sellenddate as timestamp) as data_fim_venda
+            , cast(discontinueddate as timestamp) as data_descontinuacao
             , rowguid as linha_guia
             , cast(format_timestamp('%Y-%m-%d %H:%M:%S', cast(modifieddate as timestamp)) as timestamp) as data_modificacao
 
