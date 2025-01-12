@@ -4,7 +4,9 @@ with
 
         select
             cast(productid as int) as id_produto
-            , name as nome
+            , cast(productsubcategoryid as int) as id_subcategoria_produto
+            , cast(productmodelid as int) as id_modelo_produto
+            , name as nome_produto
             , productnumber as numero_produto
             , makeflag as indicador_producao
             , finishedgoodsflag as indicador_produto_finalizado
@@ -18,14 +20,12 @@ with
             , weightunitmeasurecode as codigo_unidade_medida_peso
             , cast(weight as float64) as peso
             , cast(daystomanufacture as int) as dias_fabricacao
+            , cast(sellstartdate as timestamp) as data_inicio_venda
+            , cast(sellenddate as timestamp) as data_fim_venda
+        
             , productline as linha_produto
             , class as classe
             , style as estilo
-            , cast(productsubcategoryid as int) as id_subcategoria_produto
-            , cast(productmodelid as int) as id_modelo_produto
-            , cast(sellstartdate as timestamp) as data_inicio_venda
-            , cast(sellenddate as timestamp) as data_fim_venda
-            , cast(discontinueddate as timestamp) as data_descontinuacao
             , rowguid as linha_guia
             , cast(format_timestamp('%Y-%m-%d %H:%M:%S', cast(modifieddate as timestamp)) as timestamp) as data_modificacao
 

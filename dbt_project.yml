@@ -37,6 +37,8 @@ models:
     # Applies to all files under models/example/
     example:
       materialized: view
+    marts:
+      materialized: table
 
 
 seeds:
