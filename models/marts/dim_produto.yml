@@ -1,0 +1,78 @@
+version: 2
+
+models:
+  - name: dim_produtos
+    description: tabela de dimensão com dados relacionados aos produtos
+    columns:
+      - name: sk_produto
+        description: Chave surrogada criada para a tabela dimenção.
+        tests:
+          - unique
+          - not_null
+         
+      - name: id_produto
+        description: identificador único da tabela produto.
+        tests:
+          - not_null
+     
+      - name: nome_produto
+        description: nome do produto.
+        tests:
+          - not_null
+
+
+      - name: cor
+        description: cor do produto.
+        tests:
+          - not_null
+     
+      - name: nivel_estoque_seguranca
+        description: Nível minimo do estoque pra que não haja possível falta de produtos.
+        tests:
+          - not_null
+     
+      - name: ponto_reabastecimento
+        description: Nível de estoque no qual deve fazer um pedido de reabastecimento do produto.
+        tests:
+          - not_null
+     
+      - name: custo_padrao
+        description: Custo pardão para fabricar ou adiquidirir um produto.
+        tests:
+          - not_null
+     
+      - name: lista_preco
+        description: Preco de venda ao consumir.
+        tests:
+          - not_null
+     
+      - name: tamanho
+        description: tamanho do produto.
+        tests:
+          - not_null
+     
+      - name: peso
+        description: peso do produto.
+        tests:
+          - not_null        
+     
+      - name: dias_fabricacao
+        description: Quantidade de dias encessária para fabricar o produto.
+        tests:
+          - not_null
+     
+      - name: id_subcategoria_produto
+        description: identificador unico da tabela de subcategoria do produto.
+        tests:
+          - not_null
+
+
+      - name: nome_subcategoria
+        description: nome da subcategoria de produtos.
+        tests:
+          - not_null
+     
+      - name: nome_categoria
+        description: nome da categoria de produtos.
+        tests:
+          - not_null

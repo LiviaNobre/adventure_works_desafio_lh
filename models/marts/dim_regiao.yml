@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: dim_regiao
+    description: tabela de dimensão com dados de razão da venda da Adw.
+    columns:
+      - name: sk_regiao
+        description: chave surrogada criada para a dimensão de regiao.
+        tests:
+          - unique
+          - not_null
+
+      - name: nome_estado_provincia
+        description: nome do estado ou da provincia.
+        tests:
+          - not_null
+       
+      - name: id_territorio
+        description: Identificador único de território.
+        tests:
+          - not_null
+       
+      - name: codigo_pais_regiao
+        description: identificador único da tabela de pais/região.
+        tests:
+          - not_null
+ 
+      - name: nome_pais_regiao
+        description: nome do pais ou região.
+        tests:
+          - not_null
+
+      - name: id_endreço
+        description: identificador único da tabela endereço.
+        tests:
+          - not_null
+
+      - name: cidade
+        description: nome da cidade proveniente da tabela endereço.
+        tests:
+          - not_null

@@ -147,3 +147,34 @@ sources:
               - unique
               - not_null
               - dbt_expectations.expect_column_to_exist
+    
+      
+      - name: productsubcategory
+        description: tabela com as informações das subcategorias dos produtos
+        tests:
+          - not_null
+
+        columns:
+          - name: productsubcategoryid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      - name: productcategory
+        description: tabela com as informações das categorias dos produtos
+        tests:
+          - not_null
+
+        columns:
+          - name: productcategoryid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+              - dbt_expectations.expect_column_to_exist
+
+      

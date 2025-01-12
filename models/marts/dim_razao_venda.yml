@@ -1,0 +1,31 @@
+version: 2
+
+models:
+  - name: dim_razao_venda
+    description: tabela de dimensão com dados de razão da venda da AW
+    columns:
+      - name: sk_razao_venda
+        description: chave surrogada criada para a dimensão de razão das vendas
+        tests:
+          - unique
+          - not_null
+                             
+      - name: id_razao_venda
+        description: Identificador único da tabela de razao da venda.
+        tests:
+          - not_null
+       
+      - name: id_vendas
+        description: Identificador único da tabela de vendas.
+        tests:
+            - not_null
+       
+      - name: nome_razao
+        description: nome da razão da tabela de razão de vendas.
+        tests:
+          - not_null
+       
+      - name: tipo_razao
+        description: nome do tipo da tabela de razao de vendas.
+        tests:
+          - not_null
