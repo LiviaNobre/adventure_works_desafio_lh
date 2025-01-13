@@ -22,11 +22,9 @@ with
             , cast(daystomanufacture as int) as dias_fabricacao
             , cast(sellstartdate as timestamp) as data_inicio_venda
             , cast(sellenddate as timestamp) as data_fim_venda
-        
             , productline as linha_produto
             , class as classe
             , style as estilo
-            , rowguid as linha_guia
             , cast(format_timestamp('%Y-%m-%d %H:%M:%S', cast(modifieddate as timestamp)) as timestamp) as data_modificacao
 
         from {{ source('sap_adw', 'product') }}
