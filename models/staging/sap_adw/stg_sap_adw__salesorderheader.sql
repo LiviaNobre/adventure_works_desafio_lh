@@ -3,7 +3,7 @@ with
     pedido_venda as (
 
         select
-            cast(salesorderid as int) as id_vendas
+            cast(salesorderid as int) as id_pedido_venda
             , revisionnumber as numero_revisao
             , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(orderdate as timestamp)) as timestamp) as data_pedido
             , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(duedate as timestamp)) as timestamp) as data_entrega

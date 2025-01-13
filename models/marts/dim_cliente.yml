@@ -1,78 +1,63 @@
 version: 2
 
 models:
-  - name: dim_produto
+  - name: dim_cliente
     description: tabela de dimensão com dados relacionados aos produtos
     columns:
-      - name: sk_produto
+      - name: sk_cliente
         description: Chave surrogada criada para a tabela dimenção.
         tests:
           - unique
           - not_null
          
-      - name: id_produto
+      - name: id_entidade_negocio
         description: identificador único da tabela produto.
         tests:
           - not_null
      
-      - name: nome_produto
+      - name: primeiro_nome
         description: nome do produto.
         tests:
           - not_null
 
 
-      - name: cor
+      - name: ultimo_nome
         description: cor do produto.
         tests:
           - not_null
      
-      - name: nivel_estoque_seguranca
+      - name: id_cliente
         description: Nível minimo do estoque pra que não haja possível falta de produtos.
         tests:
           - not_null
      
-      - name: ponto_reabastecimento
+      - name: id_territorio
         description: Nível de estoque no qual deve fazer um pedido de reabastecimento do produto.
         tests:
           - not_null
      
-      - name: custo_padrao
+      - name: id_estado_provincia
         description: Custo pardão para fabricar ou adiquidirir um produto.
         tests:
           - not_null
      
-      - name: lista_preco
+      - name: nome_estado_provincia
         description: Preco de venda ao consumir.
         tests:
           - not_null
      
-      - name: tamanho
+      - name: cidade
         description: tamanho do produto.
         tests:
           - not_null
      
-      - name: peso
+      - name: codigo_pais_regiao
         description: peso do produto.
         tests:
           - not_null        
      
-      - name: dias_fabricacao
+      - name: nome_pais_regiao
         description: Quantidade de dias encessária para fabricar o produto.
         tests:
           - not_null
      
-      - name: id_subcategoria_produto
-        description: identificador unico da tabela de subcategoria do produto.
-        tests:
-          - not_null
-
-
-      - name: nome_subcategoria
-        description: nome da subcategoria de produtos.
-        tests:
-          - not_null
-     
-      - name: nome_categoria
-        description: nome da categoria de produtos.
-        tests:
-          - not_null
