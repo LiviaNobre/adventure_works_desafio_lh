@@ -9,33 +9,38 @@ models:
         tests:
           - unique
           - not_null
+      
+      - name: stateprovinceid
+        description: identificador único da tabela stateprovince
+        tests:
+          - not_null              
 
-      - name: nome_estado_provincia
+      - name: stateprovince_name
         description: nome do estado ou da provincia.
         tests:
           - not_null
        
-      - name: id_territorio
+      - name: territoryid
         description: Identificador único de território.
         tests:
           - not_null
        
-      - name: codigo_pais_regiao
+      - name: countryregioncode
         description: identificador único da tabela de pais/região.
         tests:
           - not_null
  
-      - name: nome_pais_regiao
+      - name: country_region_name
         description: nome do pais ou região.
         tests:
           - not_null
 
-      - name: id_endreço
+      - name: addressid
         description: identificador único da tabela endereço.
         tests:
           - not_null
 
-      - name: cidade
+      - name: city
         description: nome da cidade proveniente da tabela endereço.
         tests:
           - not_null

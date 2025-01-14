@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: tabela de dimensão com dados relacionados aos produtos
+    columns:
+      - name: sk_customer
+        description: Chave surrogada criada para a tabela dimensão customer.
+        tests:
+          - unique
+          - not_null
+         
+      - name: customerid
+        description: Identificador único da tabela customer.
+        tests:
+          - not_null
+     
+      - name: personid
+        description: Identificador único da tabela person.
+        tests:
+          - not_null
+
+      - name: businessentityid
+        description: Identificador único global para pessoa.
+        tests:
+          - not_null
+     
+      - name: firstname
+        description: Primeiro nome
+        tests:
+          - not_null
+     
+      - name: lastname
+        description: Último nome
+        tests:
+          - not_null
+     

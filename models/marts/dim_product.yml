@@ -1,78 +1,91 @@
 version: 2
 
 models:
-  - name: dim_produto
+  - name: dim_product
     description: tabela de dimensão com dados relacionados aos produtos
     columns:
-      - name: sk_produto
+      - name: sk_product
         description: Chave surrogada criada para a tabela dimenção.
         tests:
           - unique
           - not_null
          
-      - name: id_produto
+      - name: productid
         description: identificador único da tabela produto.
         tests:
           - not_null
      
-      - name: nome_produto
+      - name: product_name
         description: nome do produto.
         tests:
           - not_null
 
-
-      - name: cor
+      - name: color
         description: cor do produto.
         tests:
           - not_null
+
+      - name: productsubcategoryid
+        description: identificador unico da tabela de subcategoria do produto.
+        tests:
+          - not_null
      
-      - name: nivel_estoque_seguranca
+      - name: safetystocklevel
         description: Nível minimo do estoque pra que não haja possível falta de produtos.
         tests:
           - not_null
      
-      - name: ponto_reabastecimento
+      - name: reorderpoint
         description: Nível de estoque no qual deve fazer um pedido de reabastecimento do produto.
         tests:
           - not_null
      
-      - name: custo_padrao
+      - name: standardcost
         description: Custo pardão para fabricar ou adiquidirir um produto.
         tests:
           - not_null
      
-      - name: lista_preco
+      - name: listprice
         description: Preco de venda ao consumir.
         tests:
           - not_null
      
-      - name: tamanho
+      - name: size
         description: tamanho do produto.
         tests:
           - not_null
      
-      - name: peso
+      - name: weight
         description: peso do produto.
         tests:
           - not_null        
      
-      - name: dias_fabricacao
+      - name: daystomanufacture
         description: Quantidade de dias encessária para fabricar o produto.
         tests:
           - not_null
-     
-      - name: id_subcategoria_produto
-        description: identificador unico da tabela de subcategoria do produto.
+
+      - name: sellstartdate
+        description: data do inicio da venda.
+        tests:
+          - not_null
+              
+      - name: sellenddate
+        description: data da conclusão da venda.
         tests:
           - not_null
 
-
-      - name: nome_subcategoria
+      - name: subcategory_name
         description: nome da subcategoria de produtos.
         tests:
           - not_null
+
+      - name: productcategoryid
+        description: identificador único da tabela categoria.
+        tests:
+          - not_null
      
-      - name: nome_categoria
+      - name: category_name
         description: nome da categoria de produtos.
         tests:
           - not_null
