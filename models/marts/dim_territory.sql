@@ -1,8 +1,8 @@
 with
-
     stateprovince as (
         select
             stateprovinceid
+            , countryregioncode
             , stateprovince_name
             , territoryid
         from {{ ref("stg_sap_adw__stateprovince") }}
@@ -18,25 +18,24 @@ with
     , address as (
         select
             addressid
+            , stateprovinceid
             , city
-        from {{ ref("stg_sap_adw__address")}}
+        from {{ ref("stg_sap_adw__address") }}
     )
 
-    dim_territory as (
+    , dim_territory as (
         select
-            {{ dbt_utils.generate_surrogate_key(['stateprovinceid', 'countryregioncode']) }} as sk_territory
-            , stateprovinceid
-            , stateprovince_name
-            , territoryid
-            , countryregioncode
-            , country_region_name
-            , addressid
-            , city
-
+            {{ dbt_utils.generate_surrogate_key(['stateprovince.stateprovinceid', 'stateprovince.countryregioncode']) }} as sk_territory
+            , stateprovince.stateprovinceid as stateprovince_state_id
+            , stateprovince.stateprovince_name
+            , stateprovince.territoryid
+            , stateprovince.countryregioncode
+            , countryregion.country_region_name
+            , address.addressid
+            , address.city
         from stateprovince
         left join countryregion on countryregion.countryregioncode = stateprovince.countryregioncode
-        left join address on address.stateprovinceid = address.stateprovinceid
+        left join address on address.stateprovinceid = stateprovince.stateprovinceid
     )
-
 select *
 from dim_territory

@@ -12,4 +12,4 @@ with
     )
 
 select *
-from loja
+from store

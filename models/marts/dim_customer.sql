@@ -15,17 +15,17 @@ with
         from {{ ref("stg_sap_adw__person") }}
     )
 
-    dim_customer as (
+    , dim_customer as (
         select
             {{ dbt_utils.generate_surrogate_key(['customerid', 'personid']) }} as sk_customer
             , customerid
-            , personid
-            , businessentityid
+            --, personid
+           -- , businessentityid
             , firstname
             , lastname
 
         from customer
-        left join person on person.businessentityid = customers.personid
+        left join person on person.businessentityid = customer.personid
 
     )
 

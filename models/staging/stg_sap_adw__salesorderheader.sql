@@ -3,10 +3,10 @@ with
     salesorderheader as (
 
         select
-            cast(salesorderid as int) as id_pedido_venda
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(orderdate as timestamp)) as timestamp) as data_pedido
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(duedate as timestamp)) as timestamp) as data_entrega
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(shipdate as timestamp)) as timestamp) as data_envio
+            cast(salesorderid as int) as salesorderid
+            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(orderdate as timestamp)) as timestamp) as orderdate
+            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(duedate as timestamp)) as timestamp) as duedate
+            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(shipdate as timestamp)) as timestamp) as shipdate
             , cast(status as int) as status
             , cast(onlineorderflag as boolean) as onlineorderflag
             , cast(purchaseordernumber as string) as purchaseordernumber
