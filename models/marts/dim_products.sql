@@ -32,7 +32,7 @@ with
         from {{ ref("stg_sap_adw__productsubcategory") }}
     )
 
-    , dim_product as (
+    , dim_products as (
         select
             {{ dbt_utils.generate_surrogate_key(['productid', 'product_name']) }} as sk_product
             , productid
@@ -56,4 +56,4 @@ with
     )
 
 select *
-from dim_product
+from dim_products

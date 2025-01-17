@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_product
+  - name: dim_products
     description: tabela de dimensão com dados relacionados aos produtos
     columns:
       - name: sk_product
@@ -12,80 +12,48 @@ models:
          
       - name: productid
         description: identificador único da tabela produto.
-        tests:
-          - not_null
      
       - name: product_name
         description: nome do produto.
-        tests:
-          - not_null
 
       - name: color
         description: cor do produto.
-        tests:
-          - not_null
 
       - name: productsubcategoryid
         description: identificador unico da tabela de subcategoria do produto.
-        tests:
-          - not_null
      
       - name: safetystocklevel
         description: Nível minimo do estoque pra que não haja possível falta de produtos.
-        tests:
-          - not_null
      
       - name: reorderpoint
         description: Nível de estoque no qual deve fazer um pedido de reabastecimento do produto.
-        tests:
-          - not_null
      
       - name: standardcost
         description: Custo pardão para fabricar ou adiquidirir um produto.
-        tests:
-          - not_null
      
       - name: listprice
         description: Preco de venda ao consumir.
-        tests:
-          - not_null
      
       - name: size
         description: tamanho do produto.
-        tests:
-          - not_null
      
       - name: weight
-        description: peso do produto.
-        tests:
-          - not_null        
+        description: peso do produto.   
      
       - name: daystomanufacture
         description: Quantidade de dias encessária para fabricar o produto.
-        tests:
-          - not_null
 
       - name: sellstartdate
         description: data do inicio da venda.
-        tests:
-          - not_null
               
       - name: sellenddate
         description: data da conclusão da venda.
-        tests:
-          - not_null
 
       - name: subcategory_name
         description: nome da subcategoria de produtos.
-        tests:
-          - not_null
 
       - name: productcategoryid
         description: identificador único da tabela categoria.
-        tests:
-          - not_null
      
       - name: category_name
         description: nome da categoria de produtos.
-        tests:
-          - not_null

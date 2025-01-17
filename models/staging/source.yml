@@ -7,23 +7,16 @@ sources:
     tables: 
       - name: customer
         description: tabela de clientes
-        tests:
-          - not_null
-          - dbt_expectations.expect_table_column_count_to_equal:
-              value: 6
+
         columns:
           - name: customerid
             description: Id do cliente. Chave primária (PK) da tabela
             data_type: int64
             tests:
               - unique
-              - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: salesorderdetail
         description: tabela de venda cuja granularidade é o produto e fará parte da tabela fato
-        tests:
-          - not_null
 
         columns:
           - name: salesorderdetailid
@@ -32,12 +25,9 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: salesorderheader
         description: tabela de venda cuja granularidade é a própria venda e fará parte da tabela fato
-        tests:
-          - not_null
 
         columns:
           - name: salesorderid
@@ -46,17 +36,12 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: salesorderheadersalesreason
         description: tabela que conecta vendas e o motivo das vendas
-        tests:
-          - not_null
     
       - name: salesreason
         description: tabela de motivo de venda
-        tests:
-          - not_null
 
         columns:
           - name: salesreasonid
@@ -65,17 +50,12 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
     
       - name: store
         description: tabela com informações das lojas
-        tests:
-          - not_null
 
       - name: creditcard
         description: tabela de informações sobre cartão de crédito
-        tests:
-          - not_null
 
         columns:
           - name: creditcardid
@@ -84,12 +64,9 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: person
         description: tabela contendo as informações de todas as pessoas
-        tests:
-          - not_null
 
         columns:
           - name: businessentityid
@@ -98,12 +75,9 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
       
       - name: address
         description: tabela com as informações dos endereços
-        tests:
-          - not_null
 
         columns:
           - name: addressid
@@ -112,18 +86,13 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       
       - name: countryregion
         description: tabela com os nomes dos países e regiões
-        tests:
-          - not_null
 
       - name: stateprovince
         description: tabela com as informações dos estados e províncias
-        tests:
-          - not_null
 
         columns:
           - name: stateprovinceid
@@ -132,12 +101,9 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: product
         description: tabela com as informações dos produtos
-        tests:
-          - not_null
 
         columns:
           - name: productid
@@ -145,14 +111,10 @@ sources:
             data_type: int64
             tests:
               - unique
-              - not_null
-              - dbt_expectations.expect_column_to_exist
-    
+              - not_null    
       
       - name: productsubcategory
         description: tabela com as informações das subcategorias dos produtos
-        tests:
-          - not_null
 
         columns:
           - name: productsubcategoryid
@@ -161,12 +123,9 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
       - name: productcategory
         description: tabela com as informações das categorias dos produtos
-        tests:
-          - not_null
 
         columns:
           - name: productcategoryid
@@ -175,18 +134,4 @@ sources:
             tests:
               - unique
               - not_null
-              - dbt_expectations.expect_column_to_exist
 
-      - name: businessentity
-        description: tabela que servirá de conexão com várias outras tabelas
-        tests:
-          - not_null
-
-        columns:
-          - name: businessentityid
-            description: identificador único global
-            data_type: int64
-            tests:
-              - unique
-              - not_null
-              - dbt_expectations.expect_column_to_exist

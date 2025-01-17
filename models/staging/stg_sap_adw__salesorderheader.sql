@@ -23,7 +23,7 @@ with
             , cast(subtotal as float64) as subtotal
             , cast(taxamt as float64) as taxamt
             , cast(freight as float64) as freight
-            , cast(totaldue as float64) as totaldue 
+            , cast(totaldue as float64) as totaldue
 
         from {{ source('sap_adw', 'salesorderheader') }}
 

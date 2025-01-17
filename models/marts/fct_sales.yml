@@ -1,0 +1,122 @@
+version: 2
+
+models:
+  - name: sales_order
+    description: dados relacionados aos pedidos de venda, incluindo informações do cabeçalho do pedido e os detalhes do pedido.
+    columns:
+      - name: sk_sales
+        description: Chave substituta gerada para identificar unicamente cada pedido de venda com base nas chaves do cabeçalho e do detalhe do pedido.
+        tests:
+          - unique
+          - not_null
+
+      - name: salesorderid
+        description: Identificador único do pedido de venda.
+        tests:
+          - not_null
+
+      - name: orderdate
+        description: Data em que o pedido foi feito.
+        tests:
+          - not_null
+
+      - name: duedate
+        description: Data prevista para entrega do pedido.
+        tests:
+          - not_null
+
+      - name: shipdate
+        description: Data em que o pedido foi despachado.
+        tests:
+          - not_null
+
+      - name: status
+        description: Status do pedido.
+        tests:
+          - not_null
+
+      - name: onlineorderflag
+        description: Indicador se o pedido foi feito online (valor booleano).
+
+      - name: customerid
+        description: Identificador único do cliente que fez o pedido.
+        tests:
+          - not_null
+
+      - name: territoryid
+        description: Identificador da região de vendas onde o pedido foi realizado.
+        tests:
+          - not_null
+
+      - name: salespersonid
+        description: Identificador do vendedor responsável pelo pedido.
+
+      - name: creditcardapprovalcode
+        description: Código de aprovação do cartão de crédito para o pagamento do pedido.
+
+      - name: subtotal
+        description: Valor subtotal do pedido, antes de impostos e frete.
+        tests:
+          - not_null
+
+      - name: taxamt
+        description: Valor total de impostos aplicados ao pedido.
+
+      - name: freight
+        description: Custo do frete para o pedido.
+
+      - name: totaldue
+        description: Valor total do pedido, incluindo impostos, frete e outras taxas.
+        tests:
+          - not_null
+
+      - name: creditcardid
+        description: Identificador do cartão de crédito utilizado para o pagamento do pedido.
+
+      - name: salesorderdetailid
+        description: Identificador único do detalhe do pedido, representando um item específico dentro de um pedido.
+        tests:
+          - not_null
+
+      - name: productid
+        description: Identificador do produto comprado.
+        tests:
+          - not_null
+
+      - name: orderqty
+        description: Quantidade do produto comprada no pedido.
+
+      - name: specialofferid
+        description: Identificador da oferta especial aplicada ao produto, se houver.
+
+      - name: unitprice
+        description: Preço unitário do produto.
+        tests:
+          - not_null
+
+      - name: unitpricediscount
+        description: Desconto aplicado no preço unitário do produto.
+
+      - name: totaldue_detail
+        description: Valor total devido para o detalhe do pedido, considerando preço unitário, desconto e quantidade.
+        tests:
+          - not_null
+
+      - name: salespersonid_from_customer
+        description: Identificador do vendedor associado ao cliente. Se não houver, será retornado 0.
+        
+      - name: fk_territory
+        description: Chave estrangeira para a dimensão de território.
+        tests:
+          - not_null
+
+      - name: fk_creditcard
+        description: Chave estrangeira para a dimensão de cartões de crédito.
+
+      - name: fk_product
+        description: Chave estrangeira para a dimensão de produtos.
+
+      - name: sk_sales_reason
+        description: Chave substituta para identificar o motivo de venda associado ao pedido.
+        tests:
+          - not_null

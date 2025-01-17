@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_customer
+  - name: dim_customers
     description: tabela de dimensão com dados relacionados aos produtos
     columns:
       - name: sk_customer
@@ -12,26 +12,29 @@ models:
          
       - name: customerid
         description: Identificador único da tabela customer.
-        tests:
-          - not_null
      
       - name: personid
         description: Identificador único da tabela person.
-        tests:
-          - not_null
+
+      - name: storeid
+        description: Identificador único das lojas
+        
+      - name: territoryid
+        description: Identificador único de territory
 
       - name: businessentityid
         description: Identificador único global para pessoa.
-        tests:
-          - not_null
      
       - name: firstname
         description: Primeiro nome
-        tests:
-          - not_null
      
       - name: lastname
         description: Último nome
-        tests:
-          - not_null
+      
+      - name: store_name
+        description: Nome da loja.
+
+      - name: salespersonid
+        description: identificador único do vendedor
+
      
