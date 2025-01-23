@@ -4,9 +4,13 @@ with
 
         select
             cast(salesorderid as int) as salesorderid
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(orderdate as timestamp)) as timestamp) as orderdate
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(duedate as timestamp)) as timestamp) as duedate
-            , cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(shipdate as timestamp)) as timestamp) as shipdate
+            --, format_date('%Y-%m-%d', orderdate) as orderdate
+            , date(orderdate) as orderdate
+            , date(duedate) as duedate
+            , date(shipdate) as shipdate
+            --, cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(orderdate as timestamp)) as timestamp) as orderdate
+            --, cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(duedate as timestamp)) as timestamp) as duedate
+            --, cast(format_timestamp('%Y-%m-%m %H:%M:%S', cast(shipdate as timestamp)) as timestamp) as shipdate
             , cast(status as int) as status
             , cast(onlineorderflag as boolean) as onlineorderflag
             , cast(purchaseordernumber as string) as purchaseordernumber

@@ -25,7 +25,7 @@ with
 
     , dim_territory as (
         select
-            {{ dbt_utils.generate_surrogate_key(['stateprovince.stateprovinceid', 'stateprovince.countryregioncode']) }} as sk_territory
+            {{ dbt_utils.generate_surrogate_key(['stateprovince.stateprovinceid', 'address.addressid']) }} as sk_territory
             , stateprovince.stateprovinceid as stateprovince_state_id
             , stateprovince.stateprovince_name
             , stateprovince.territoryid

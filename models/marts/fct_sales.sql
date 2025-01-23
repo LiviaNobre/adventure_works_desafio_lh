@@ -2,7 +2,7 @@ with
     salesorderheader as (
         select
             salesorderid
-            , orderdate
+            , date(orderdate) as orderdate
             , duedate
             , shipdate
             , case
@@ -28,11 +28,7 @@ with
             , creditcardapprovalcode
         from {{ ref('stg_sap_adw__salesorderheader') }}
     )
-    /*salesorderheader as (
-        select *
-        from {{ ref("stg_sap_adw__salesorderheader") }}
-    )*/
-
+    
     , salesorderdetail as (
         select *
         from {{ ref("stg_sap_adw__salesorderdetail") }}
@@ -76,6 +72,13 @@ with
         from {{ ref('dim_products') }}
     )
 
+    , dim_dates as (
+        select
+            sk_date
+            , data_dia
+        from {{ ref('dim_dates') }}
+    )
+
     , fct_sales as (
         select
             {{ dbt_utils.generate_surrogate_key(['salesorderheader.salesorderid', 'salesorderdetail.salesorderdetailid']) }} as sk_sales
@@ -102,10 +105,14 @@ with
             , salesorderdetail.specialofferid
             , salesorderdetail.unitprice
             , salesorderdetail.unitpricediscount
-            , ((1 - salesorderdetail.unitpricediscount) * salesorderdetail.unitprice * salesorderdetail.orderqty) as product_value
+            , (salesorderdetail.orderqty * salesorderdetail.unitprice) as total --bruto
+            , ((1 - salesorderdetail.unitpricediscount) * salesorderdetail.unitprice * salesorderdetail.orderqty) as product_value --liquido
             , coalesce(dim_customers.salespersonid, 0) as salespersonid
             , dim_credit_cards.sk_creditcard as fk_creditcard
-            , dim_sales_reasons.sk_sales_reason as sk_sales_reason
+            , dim_sales_reasons.sk_sales_reason as fk_sales_reason
+            , dim_territories.sk_territory as fk_territory
+            , dim_dates.sk_date as fk_date
+            , dim_customers.sk_customer as fk_customer
         from salesorderheader
         left join dim_customers on dim_customers.customerid = salesorderheader.customerid
         left join salesorderdetail on salesorderdetail.salesorderid = salesorderheader.salesorderid
@@ -113,6 +120,8 @@ with
         left join dim_sales_reasons on dim_sales_reasons.salesorderid = salesorderheader.salesorderid
         left join dim_credit_cards on dim_credit_cards.creditcardid = salesorderheader.creditcardid
         left join dim_territories on dim_territories.addressid = salesorderheader.shiptoaddressid
+        --left join dim_dates on cast(dim_dates.data_dia as date) = cast(salesorderheader.orderdate as date)
+        left join dim_dates on dim_dates.data_dia = salesorderheader.orderdate
     )
 
 select *

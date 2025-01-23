@@ -15,6 +15,12 @@ with
             , firstname
             , lastname
             , persontype
+            , case
+                when emailpromotion = "0" then "Não recebe e-mail promocional"
+                when emailpromotion = "1" then "Recebe e-mail promocional"
+                when emailpromotion = "2" then "Recebe e-mail promocional e engaja"
+                when emailpromotion is null then "Não se aplica"
+            end as emailpromotion
         from {{ ref("stg_sap_adw__person") }}
     )
 
@@ -39,6 +45,7 @@ with
             , person.persontype
             , store.store_name
             , store.salespersonid
+            , person.emailpromotion
 
         from customer
         left join person on person.businessentityid = customer.personid

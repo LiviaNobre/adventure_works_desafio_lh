@@ -2,7 +2,7 @@ with
     dates_raw as (
     {{ dbt_utils.date_spine(
         datepart="day",
-        start_date="cast('2005-01-01' as date)",
+        start_date="cast('2008-01-01' as date)",
         end_date="date_add(current_date(), interval 100 year)"
         )
     }}
@@ -80,7 +80,8 @@ with
 
     , final_cte as (
         select
-            data_dia
+            {{ dbt_utils.generate_surrogate_key(['data_dia', 'dia_da_semana']) }} as sk_date
+            , data_dia
             , dia_da_semana
             , nome_do_dia
             , mes
