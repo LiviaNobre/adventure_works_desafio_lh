@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_sales_reason
+  - name: dim_sales_reasons
     description: tabela de dimensão com dados de razão da venda da AW
     columns:
       - name: sk_sales_reason

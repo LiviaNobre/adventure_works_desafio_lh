@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_data
+  - name: dim_dates
     description: Dimensão de datas com granularidade diária, contendo ano, mês, dia, trimestre, semana do ano, e outras informações úteis.
     columns:
       - name: data
