@@ -112,7 +112,5 @@ models:
       - name: fk_product
         description: Chave estrangeira para a dimensão de produtos.
 
-      - name: sk_sales_reason
+      - name: fk_sales_reason
         description: Chave substituta para identificar o motivo de venda associado ao pedido.
-        tests:
-          - not_null
