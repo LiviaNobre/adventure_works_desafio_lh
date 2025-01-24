@@ -1,0 +1,137 @@
+version: 2
+
+sources:
+  - name: sap_adw
+    description: Fonte do SAP do Adventure Works
+    schema: sap_adw
+    tables: 
+      - name: customer
+        description: tabela de clientes
+
+        columns:
+          - name: customerid
+            description: Id do cliente. Chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+
+      - name: salesorderdetail
+        description: tabela de venda cuja granularidade é o produto e fará parte da tabela fato
+
+        columns:
+          - name: salesorderdetailid
+            description: Id da tabela de detalhe das vendas e chave primária (PK)
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      - name: salesorderheader
+        description: tabela de venda cuja granularidade é a própria venda e fará parte da tabela fato
+
+        columns:
+          - name: salesorderid
+            description: Id da venda e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      - name: salesorderheadersalesreason
+        description: tabela que conecta vendas e o motivo das vendas
+    
+      - name: salesreason
+        description: tabela de motivo de venda
+
+        columns:
+          - name: salesreasonid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+    
+      - name: store
+        description: tabela com informações das lojas
+
+      - name: creditcard
+        description: tabela de informações sobre cartão de crédito
+
+        columns:
+          - name: creditcardid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      - name: person
+        description: tabela contendo as informações de todas as pessoas
+
+        columns:
+          - name: businessentityid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+      
+      - name: address
+        description: tabela com as informações dos endereços
+
+        columns:
+          - name: addressid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      
+      - name: countryregion
+        description: tabela com os nomes dos países e regiões
+
+      - name: stateprovince
+        description: tabela com as informações dos estados e províncias
+
+        columns:
+          - name: stateprovinceid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      - name: product
+        description: tabela com as informações dos produtos
+
+        columns:
+          - name: productid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null    
+      
+      - name: productsubcategory
+        description: tabela com as informações das subcategorias dos produtos
+
+        columns:
+          - name: productsubcategoryid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
+      - name: productcategory
+        description: tabela com as informações das categorias dos produtos
+
+        columns:
+          - name: productcategoryid
+            description: Id e chave primária (PK) da tabela
+            data_type: int64
+            tests:
+              - unique
+              - not_null
+
