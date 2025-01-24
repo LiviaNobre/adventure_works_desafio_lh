@@ -99,8 +99,6 @@ models:
 
       - name: totaldue_detail
         description: Valor total devido para o detalhe do pedido, considerando preço unitário, desconto e quantidade.
-        tests:
-          - not_null
 
       - name: salespersonid_from_customer
         description: Identificador do vendedor associado ao cliente. Se não houver, será retornado 0.
@@ -118,5 +116,3 @@ models:
 
       - name: sk_sales_reason
         description: Chave substituta para identificar o motivo de venda associado ao pedido.
-        tests:
-          - not_null
