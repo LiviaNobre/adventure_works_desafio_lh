@@ -61,7 +61,7 @@ with
         select
             sk_sales_reason
             , salesorderid
-            , reason_names
+            , reason_name
         from {{ ref('dim_sales_reasons') }}
     )
 
@@ -81,7 +81,7 @@ with
 
     , fct_sales as (
         select
-            {{ dbt_utils.generate_surrogate_key(['salesorderdetail.salesorderdetailid']) }} as sk_sales
+            {{ dbt_utils.generate_surrogate_key(['salesorderdetail.productid', 'salesorderdetail.salesorderdetailid']) }} as sk_sales
             , salesorderheader.salesorderid
             , salesorderdetail.salesorderdetailid
             , dim_products.productid

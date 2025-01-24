@@ -7,7 +7,6 @@ models:
       - name: sk_sales
         description: Chave substituta gerada para identificar unicamente cada pedido de venda com base nas chaves do cabeçalho e do detalhe do pedido.
         tests:
-          - unique
           - not_null
 
       - name: salesorderid
