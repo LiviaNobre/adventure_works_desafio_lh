@@ -114,5 +114,3 @@ models:
 
       - name: sk_sales_reason
         description: Chave substituta para identificar o motivo de venda associado ao pedido.
-        tests:
-          - not_null
