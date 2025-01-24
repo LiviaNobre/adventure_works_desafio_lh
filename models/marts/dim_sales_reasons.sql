@@ -23,12 +23,12 @@ with
 
     , sales_reasons as (
         select
-            {{ dbt_utils.generate_surrogate_key(['salesorderheader.salesorderid']) }} as sk_sales_reason
+            {{ dbt_utils.generate_surrogate_key(['salesorderheader.salesorderid', 'salesreason.salesreasonid']) }} as sk_sales_reason
             , salesorderheader.salesorderid
             , coalesce(string_agg(salesreason.reason_name, ', '), 'Not Informed') as reason_names 
             , coalesce(string_agg(salesreason.reasontype, ', '), 'Not Informed') as reason_types
         from salesorderheader
-        left join salesorderheadersalesreason on salesorderheadersalesreason.salesorderid = salesorderheader.salesorderid
+        -left join salesorderheadersalesreason on salesorderheadersalesreason.salesorderid = salesorderheader.salesorderid
         left join salesreason on salesreason.salesreasonid = salesorderheadersalesreason.salesreasonid
         group by salesorderheader.salesorderid
     )
