@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: sales_order
+  - name: fct_sales
     description: dados relacionados aos pedidos de venda, incluindo informações do cabeçalho do pedido e os detalhes do pedido.
     columns:
       - name: sk_sales
