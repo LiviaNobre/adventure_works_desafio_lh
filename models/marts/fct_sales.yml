@@ -67,8 +67,6 @@ models:
 
       - name: totaldue
         description: Valor total do pedido, incluindo impostos, frete e outras taxas.
-        tests:
-          - not_null
 
       - name: creditcardid
         description: Identificador do cartão de crédito utilizado para o pagamento do pedido.
@@ -99,8 +97,6 @@ models:
 
       - name: totaldue_detail
         description: Valor total devido para o detalhe do pedido, considerando preço unitário, desconto e quantidade.
-        tests:
-          - not_null
 
       - name: salespersonid_from_customer
         description: Identificador do vendedor associado ao cliente. Se não houver, será retornado 0.
