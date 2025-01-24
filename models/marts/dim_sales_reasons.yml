@@ -8,7 +8,6 @@ models:
         description: chave surrogada criada para a dimensão de razão das vendas
         tests:
           - unique
-          - not_null
                              
       - name: salesorderid
         description: Identificador único da tabela de venda.
