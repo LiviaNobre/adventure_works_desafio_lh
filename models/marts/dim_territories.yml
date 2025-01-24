@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_territory
+  - name: dim_territories
     description: tabela de dimensão com dados de razão da venda da Adw.
     columns:
       - name: sk_territory
