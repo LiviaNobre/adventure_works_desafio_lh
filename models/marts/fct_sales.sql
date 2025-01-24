@@ -81,7 +81,7 @@ with
 
     , fct_sales as (
         select
-            {{ dbt_utils.generate_surrogate_key(['salesorderheader.salesorderid', 'salesorderdetail.salesorderdetailid']) }} as sk_sales
+            {{ dbt_utils.generate_surrogate_key(['salesorderdetail.salesorderdetailid']) }} as sk_sales
             , salesorderheader.salesorderid
             , salesorderdetail.salesorderdetailid
             , dim_products.productid
