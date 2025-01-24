@@ -37,5 +37,4 @@ models:
       - name: salespersonid
         description: identificador único do vendedor
 
-      - name: emailpromotion
-        description: variável que diz se o cliente recebeu ou não email promocional
+     
